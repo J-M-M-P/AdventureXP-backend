@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -24,7 +25,7 @@ public class Activity {
     private String image;
 
     @ManyToMany(mappedBy = "activities")
-    private Set<Reservation> reservations;
+    private Set<Reservation> reservations = new HashSet<>();
 
 public Activity(String activityName, int ageLimit, int participantLimit, String description, String image) {
     this.activityName = activityName;

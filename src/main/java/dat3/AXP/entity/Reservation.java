@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -16,7 +18,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String date;
+    private LocalDateTime dateTime;
     private boolean bookedStatus;
 
     @ManyToMany
@@ -25,10 +27,10 @@ public class Reservation {
             joinColumns = @JoinColumn(name = "reservation_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
-    private Set<Activity> activities;
+    private Set<Activity> activities = new HashSet<>();
 
-    public Reservation(String date, boolean bookedStatus) {
-        this.date = date;
+    public Reservation(LocalDateTime dateTime, boolean bookedStatus) {
+        this.dateTime = dateTime;
         this.bookedStatus= bookedStatus;
     }
 }
