@@ -1,5 +1,9 @@
 package dat3.AXP.configuration;
 
+import dat3.AXP.entity.Activity;
+import dat3.AXP.entity.Reservation;
+import dat3.AXP.repository.ActivityRepository;
+import dat3.AXP.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
 import dat3.security.repository.RoleRepository;
@@ -14,12 +18,16 @@ import java.util.NoSuchElementException;
 @Component
 public class SetupDevUsers implements ApplicationRunner {
 
+    ReservationRepository reservationRepository;
+    ActivityRepository activityRepository;
     UserWithRolesRepository userWithRolesRepository;
     RoleRepository roleRepository;
     PasswordEncoder pwEncoder;
     String passwordUsedByAll;
 
-    public SetupDevUsers(UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+        this.reservationRepository = reservationRepository;
+        this.activityRepository = activityRepository;
         this.userWithRolesRepository = userWithRolesRepository;
         this.roleRepository = roleRepository;
         this.pwEncoder = passwordEncoder;
@@ -66,5 +74,11 @@ public class SetupDevUsers implements ApplicationRunner {
         userWithRolesRepository.save(user2);
         userWithRolesRepository.save(user3);
         userWithRolesRepository.save(user4);
+        //---- test reservations/activity start ---- \\
+        Reservation reservation1 = new Reservation("2024-04-14", false);
+        reservationRepository.save(reservation1);
+        Activity activity1 = new Activity("Mini Golf", 0, 1, "Same as golf, just a bit smaller", "imagestringgoeshere....");
+        activityRepository.save(activity1);
+        //---- test reservations/activity end ---- \\
     }
 }
