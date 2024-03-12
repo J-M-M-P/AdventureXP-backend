@@ -1,5 +1,7 @@
 package dat3.AXP.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,14 +26,16 @@ public class Activity {
     private String description;
     private String image;
 
-    @ManyToMany(mappedBy = "activities")
+    @JsonIgnoreProperties("activities") // Ignore 'activities' field during serialization of Reservation
+    @ManyToMany(mappedBy = "activities", fetch = FetchType.EAGER)
     private Set<Reservation> reservations = new HashSet<>();
 
-public Activity(String activityName, int ageLimit, int participantLimit, String description, String image) {
-    this.activityName = activityName;
-    this.ageLimit = ageLimit;
-    this.participantLimit = participantLimit;
-    this.description = description;
-    this.image = image;
-}
+    public Activity(String activityName, int ageLimit, int participantLimit, String description, String image) {
+        this.activityName = activityName;
+        this.ageLimit = ageLimit;
+        this.participantLimit = participantLimit;
+        this.description = description;
+        this.image = image;
+    }
+
 }

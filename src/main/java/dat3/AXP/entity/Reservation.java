@@ -1,6 +1,8 @@
 
 package dat3.AXP.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +23,8 @@ public class Reservation {
     private LocalDateTime dateTime;
     private boolean bookedStatus;
 
-    @ManyToMany
+    @JsonIgnoreProperties("reservations")// Ignore 'reservations' field during serialization of Reservation
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "reservation_activity",
             joinColumns = @JoinColumn(name = "reservation_id"),
@@ -33,4 +36,5 @@ public class Reservation {
         this.dateTime = dateTime;
         this.bookedStatus= bookedStatus;
     }
+
 }

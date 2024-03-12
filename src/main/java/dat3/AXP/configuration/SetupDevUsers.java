@@ -81,15 +81,16 @@ public class SetupDevUsers implements ApplicationRunner {
         Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
-        reservation1.getActivities().add(activity2);
-        reservation2.getActivities().add(activity3);
 
-//        activity1.getReservations().add(reservation1);
+        reservation1.getActivities().add(activity2);
+        reservation1.getActivities().add(activity3);
+        activity2.getReservations().add(reservation1);
+
         activityRepository.save(activity1);
         activityRepository.save(activity2);
         activityRepository.save(activity3);
-        reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);
+        reservationRepository.save(reservation1);
         //---- test reservations/activity end ---- \\
     }
 }
