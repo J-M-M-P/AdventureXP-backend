@@ -1,9 +1,6 @@
 package dat3.AXP.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +19,8 @@ public class Equipment {
     private int totalUnits;
     private int defectiveUnits;
     //activityId references activities table
-    private int activityId;
+    @ManyToOne
+    @JoinColumn(name = "activity_id_fk")
+    private Activity activity;
 
 }

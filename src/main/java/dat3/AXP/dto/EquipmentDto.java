@@ -1,5 +1,6 @@
 package dat3.AXP.dto;
 
+import dat3.AXP.entity.Activity;
 import dat3.AXP.entity.Equipment;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class EquipmentDto {
     private boolean status;
     private int totalUnits;
     private int defectiveUnits;
-    private int activityId;
+    private Activity activity;
 
 
     public EquipmentDto(Equipment e) {
@@ -23,6 +24,6 @@ public class EquipmentDto {
         this.status = e.isStatus();
         this.totalUnits = e.getTotalUnits();
         this.defectiveUnits = e.getDefectiveUnits();
-        this.activityId = e.getActivityId();
+        this.activity = e.getActivity();
     }
 }

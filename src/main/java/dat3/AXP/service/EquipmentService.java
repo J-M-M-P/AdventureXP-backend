@@ -40,7 +40,7 @@ public class EquipmentService {
             existingEquipment.setStatus(updatedEquipment.isStatus());
             existingEquipment.setTotalUnits(updatedEquipment.getTotalUnits());
             existingEquipment.setDefectiveUnits(updatedEquipment.getDefectiveUnits());
-            existingEquipment.setActivityId(updatedEquipment.getActivityId());
+            existingEquipment.setActivity(updatedEquipment.getActivity());
 
             // Gem opdateret udstyr i databasen
             return equipmentRepository.save(existingEquipment);
