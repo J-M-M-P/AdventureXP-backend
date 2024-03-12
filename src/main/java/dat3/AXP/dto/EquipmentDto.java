@@ -12,8 +12,8 @@ public class EquipmentDto {
     private Integer id;
     private String name;
     private boolean status;
-    private double totalUnits;
-    private double defectiveUnits;
+    private int totalUnits;
+    private int defectiveUnits;
     private int activityId;
 
 

@@ -19,8 +19,9 @@ public class Equipment {
     private int id;
     private String name;
     private boolean status;
-    private double totalUnits;
-    private double defectiveUnits;
+    private int totalUnits;
+    private int defectiveUnits;
+    //activityId references activities table
     private int activityId;
 
 }
