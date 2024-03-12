@@ -27,12 +27,21 @@ import java.util.List;
             return equipmentService.getAllEquipment();
         }
 
-    @PostMapping("/add-equipment")
-    public Equipment addEquipment(@RequestBody Equipment equipment) {
+        @PostMapping("/add-equipment")
+        public Equipment addEquipment(@RequestBody Equipment equipment) {
         return equipmentService.createEquipment(equipment);
     }
 
+    @PutMapping("/update-equipment/{id}")
+    public Equipment updateEquipment(@PathVariable int id, @RequestBody Equipment equipment) {
+        return equipmentService.updateEquipment(id, equipment);
+    }
 
+    @DeleteMapping("/delete-equipment/{id}")
+    public String deleteEquipment(@PathVariable int id) {
+        equipmentService.deleteEquipment(id);
+        return "Equipment with ID: " + id + " has been deleted";
+    }
 
 
 
