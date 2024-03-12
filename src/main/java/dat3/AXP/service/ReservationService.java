@@ -5,6 +5,7 @@ import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,17 +19,18 @@ public class ReservationService {
     ReservationRepository reservationRepository;
 
     public List<Reservation> getAllReservations() {
-//        return reservationRepository.findAll();
         List<Reservation> reservations = reservationRepository.findAll();
         return reservations;
     }
 
-    public Reservation createReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
+    public ReservationDto getReservationById(int id){
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "reservation not found"));
+        return new ReservationDto(reservation);
     }
 
-    public Optional<Reservation> getReservationById(int id){
-        return reservationRepository.findById(id);
+    public Reservation createReservation(Reservation reservation) {
+        return reservationRepository.save(reservation);
     }
 
     public ReservationDto editReservation(ReservationDto request, int id) {
@@ -45,6 +47,13 @@ public class ReservationService {
     private void updateReservation(Reservation original, ReservationDto r) {
         original.setDateTime(r.getDateTime());
         original.setBookedStatus(r.isBookedStatus());
+    }
+
+    public ResponseEntity deleteReservation(int id) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "reservation not found"));
+        reservationRepository.delete(reservation);
+        return new ResponseEntity("reservation was deleted!", HttpStatus.OK);
     }
 
     // Add other business logic methods related to activities

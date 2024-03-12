@@ -82,9 +82,12 @@ public class SetupDevUsers implements ApplicationRunner {
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
 
-        reservation1.getActivities().add(activity2);
+        reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
-        activity2.getReservations().add(reservation1);
+        reservation1.getActivities().add(activity2);
+//        activity1.getReservations().add(reservation1);
+//        activity2.getReservations().add(reservation2);
+//        activity3.getReservations().add(reservation2);
 
         activityRepository.save(activity1);
         activityRepository.save(activity2);
