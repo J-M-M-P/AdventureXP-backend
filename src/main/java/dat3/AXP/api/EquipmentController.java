@@ -1,7 +1,7 @@
 package dat3.AXP.api;
 
 import dat3.AXP.entity.Equipment;
-import dat3.AXP.repository.EquipmentRepository;
+import dat3.AXP.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,15 +9,14 @@ import java.util.List;
 
 
 @RestController
-    @RequestMapping("/equipment")
+    @RequestMapping("/api/equipment")
     public class EquipmentController {
 
+    @Autowired
+    private EquipmentService equipmentService;
 
-        @Autowired
-        EquipmentRepository equipmentRepository;
 
-
-        @GetMapping("/")
+        @GetMapping
         public String helloAdventureXP() {
             return "Equipment site for AdventureXP";
         }
@@ -25,12 +24,12 @@ import java.util.List;
 
         @GetMapping("/all-equipment")
         public List<Equipment> getAllEquipment() {
-            return equipmentRepository.findAll();
+            return equipmentService.getAllEquipment();
         }
 
     @PostMapping("/add-equipment")
     public Equipment addEquipment(@RequestBody Equipment equipment) {
-        return equipmentRepository.save(equipment);
+        return equipmentService.createEquipment(equipment);
     }
 
 
