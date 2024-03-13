@@ -1,5 +1,6 @@
 package dat3.AXP.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Customer {
     private String phoneNumber;
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Reservation> reservations = new HashSet<>();
 

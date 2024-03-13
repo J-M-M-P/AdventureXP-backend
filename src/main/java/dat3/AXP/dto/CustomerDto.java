@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,6 +17,7 @@ public class CustomerDto {
     private int age;
     private String phoneNumber;
     private String email;
+    private Set<ReservationDto> reservations;
 
     public CustomerDto(Customer c){
         this.id = c.getId();
@@ -21,5 +25,6 @@ public class CustomerDto {
         this.age = c.getAge();
         this.phoneNumber = c.getPhoneNumber();
         this.email = c.getEmail();
+        this.reservations = c.getReservations().stream().map(ReservationDto::new).collect(Collectors.toSet());
     }
 }
