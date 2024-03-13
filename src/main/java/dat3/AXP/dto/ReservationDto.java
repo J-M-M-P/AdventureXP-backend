@@ -5,17 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 public class ReservationDto {
     private Integer id;
-    private String date;
+    private LocalDateTime dateTime;
     private boolean bookedStatus;
 
     public ReservationDto(Reservation r) {
         this.id = r.getId();
-        this.date = r.getDate();
+        this.dateTime = r.getDateTime();
         this.bookedStatus = r.isBookedStatus();
     }
 }

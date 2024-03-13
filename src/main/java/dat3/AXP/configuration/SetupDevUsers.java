@@ -13,6 +13,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 @Component
@@ -75,10 +76,24 @@ public class SetupDevUsers implements ApplicationRunner {
         userWithRolesRepository.save(user3);
         userWithRolesRepository.save(user4);
         //---- test reservations/activity start ---- \\
-        Reservation reservation1 = new Reservation("2024-04-14", false);
-        reservationRepository.save(reservation1);
-        Activity activity1 = new Activity("Mini Golf", 0, 1, "Same as golf, just a bit smaller", "imagestringgoeshere....");
+        Activity activity1 = new Activity("Mini Golf", 0, 5, "Same as golf, just a bit smaller", "imagestringgoeshere....");
+        Activity activity2 = new Activity("Go-Kart", 12, 16, "Race your friends in a Go-Kart", "imagestringgoeshere....");
+        Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
+        Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
+        Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
+
+        reservation2.getActivities().add(activity1);
+        reservation1.getActivities().add(activity3);
+        reservation1.getActivities().add(activity2);
+//        activity1.getReservations().add(reservation1);
+//        activity2.getReservations().add(reservation2);
+//        activity3.getReservations().add(reservation2);
+
         activityRepository.save(activity1);
+        activityRepository.save(activity2);
+        activityRepository.save(activity3);
+        reservationRepository.save(reservation2);
+        reservationRepository.save(reservation1);
         //---- test reservations/activity end ---- \\
     }
 }
