@@ -86,6 +86,7 @@ public class SetupDevUsers implements ApplicationRunner {
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
         Customer customer1 = new Customer("Allan", 18, "12345678", "allan@email.email");
+        customerRepository.save(customer1);
 
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
@@ -93,6 +94,7 @@ public class SetupDevUsers implements ApplicationRunner {
 //        activity1.getReservations().add(reservation1);
 //        activity2.getReservations().add(reservation2);
 //        activity3.getReservations().add(reservation2);
+        reservation2.setCustomer(customer1);
 
 
         activityRepository.save(activity1);
@@ -100,7 +102,6 @@ public class SetupDevUsers implements ApplicationRunner {
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
-        customerRepository.save(customer1);
         //---- test data end ---- \\
     }
 }
