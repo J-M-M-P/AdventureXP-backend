@@ -1,8 +1,10 @@
 package dat3.AXP.configuration;
 
 import dat3.AXP.entity.Activity;
+import dat3.AXP.entity.Customer;
 import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.ActivityRepository;
+import dat3.AXP.repository.CustomerRepository;
 import dat3.AXP.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
@@ -21,14 +23,16 @@ public class SetupDevUsers implements ApplicationRunner {
 
     ReservationRepository reservationRepository;
     ActivityRepository activityRepository;
+    CustomerRepository customerRepository;
     UserWithRolesRepository userWithRolesRepository;
     RoleRepository roleRepository;
     PasswordEncoder pwEncoder;
     String passwordUsedByAll;
 
-    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, CustomerRepository customerRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
         this.reservationRepository = reservationRepository;
         this.activityRepository = activityRepository;
+        this.customerRepository = customerRepository;
         this.userWithRolesRepository = userWithRolesRepository;
         this.roleRepository = roleRepository;
         this.pwEncoder = passwordEncoder;
@@ -75,12 +79,13 @@ public class SetupDevUsers implements ApplicationRunner {
         userWithRolesRepository.save(user2);
         userWithRolesRepository.save(user3);
         userWithRolesRepository.save(user4);
-        //---- test reservations/activity start ---- \\
+        //---- test data start ---- \\
         Activity activity1 = new Activity("Mini Golf", 0, 5, "Same as golf, just a bit smaller", "imagestringgoeshere....");
         Activity activity2 = new Activity("Go-Kart", 12, 16, "Race your friends in a Go-Kart", "imagestringgoeshere....");
         Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
+        Customer customer1 = new Customer("Allan", 18, "12345678", "allan@email.email");
 
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
@@ -89,11 +94,13 @@ public class SetupDevUsers implements ApplicationRunner {
 //        activity2.getReservations().add(reservation2);
 //        activity3.getReservations().add(reservation2);
 
+
         activityRepository.save(activity1);
         activityRepository.save(activity2);
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
-        //---- test reservations/activity end ---- \\
+        customerRepository.save(customer1);
+        //---- test data end ---- \\
     }
 }
