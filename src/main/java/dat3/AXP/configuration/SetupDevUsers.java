@@ -102,9 +102,9 @@ public class SetupDevUsers implements ApplicationRunner {
         reservationRepository.save(reservation1);
         //---- test reservations/activity end ---- \\
 
-        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity3);
+        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity1);
         Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
-        Equipment equipment3 = new Equipment(3,"Sumobrydningsdragter", true, 30, 2, activity1);
+        Equipment equipment3 = new Equipment(3,"Paintball pistoler", true, 30, 2, activity3);
 
 
         equipmentRepository.save(equipment1);
