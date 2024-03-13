@@ -2,9 +2,7 @@ package dat3.AXP.api;
 
 import dat3.AXP.dto.CustomerDto;
 import dat3.AXP.entity.Customer;
-import dat3.AXP.repository.CustomerRepository;
 import dat3.AXP.service.CustomerService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
