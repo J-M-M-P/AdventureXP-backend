@@ -17,8 +17,8 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
     @GetMapping
-    public List<Reservation> getAllReservations() {
-        return reservationService.getAllReservations();
+    public List<ReservationDto> getAllReservations(@RequestParam(required = false) Integer companyId) {
+        return reservationService.getAllReservations(companyId);
     }
 
     @GetMapping("/{id}")

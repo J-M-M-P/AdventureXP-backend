@@ -2,6 +2,7 @@ package dat3.AXP.service;
 
 import dat3.AXP.dto.ReservationDto;
 import dat3.AXP.entity.Reservation;
+import dat3.AXP.repository.CompanyRepository;
 import dat3.AXP.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,18 @@ import java.util.Optional;
 public class ReservationService {
 
     @Autowired
-    ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
+    private CompanyRepository companyRepository;
 
-    public List<Reservation> getAllReservations() {
-        List<Reservation> reservations = reservationRepository.findAll();
-        return reservations;
+
+    public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository){
+        this.reservationRepository = reservationRepository;
+        this.companyRepository = companyRepository;
+    }
+    public List<ReservationDto> getAllReservations(Integer companyId) {
+        List<Reservation> reservations = companyId == null ? reservationRepository.findAll() : reservationRepository.findByCompanyId(companyId);
+        List<ReservationDto> reservationResponses = reservations.stream().map(ReservationDto::new).toList();
+        return reservationResponses;
     }
 
     public ReservationDto getReservationById(int id){
