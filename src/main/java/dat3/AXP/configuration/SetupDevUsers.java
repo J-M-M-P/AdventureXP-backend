@@ -1,8 +1,10 @@
 package dat3.AXP.configuration;
 
 import dat3.AXP.entity.Activity;
+import dat3.AXP.entity.Equipment;
 import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.ActivityRepository;
+import dat3.AXP.repository.EquipmentRepository;
 import dat3.AXP.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
@@ -19,6 +21,7 @@ import java.util.NoSuchElementException;
 @Component
 public class SetupDevUsers implements ApplicationRunner {
 
+    EquipmentRepository equipmentRepository;
     ReservationRepository reservationRepository;
     ActivityRepository activityRepository;
     UserWithRolesRepository userWithRolesRepository;
@@ -26,12 +29,13 @@ public class SetupDevUsers implements ApplicationRunner {
     PasswordEncoder pwEncoder;
     String passwordUsedByAll;
 
-    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder, EquipmentRepository equipmentRepository) {
         this.reservationRepository = reservationRepository;
         this.activityRepository = activityRepository;
         this.userWithRolesRepository = userWithRolesRepository;
         this.roleRepository = roleRepository;
         this.pwEncoder = passwordEncoder;
+        this.equipmentRepository = equipmentRepository;
 
         passwordUsedByAll = "test12";
     }
@@ -89,11 +93,23 @@ public class SetupDevUsers implements ApplicationRunner {
 //        activity2.getReservations().add(reservation2);
 //        activity3.getReservations().add(reservation2);
 
+
+
         activityRepository.save(activity1);
         activityRepository.save(activity2);
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
         //---- test reservations/activity end ---- \\
+
+        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity3);
+        Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
+        Equipment equipment3 = new Equipment(3,"Sumobrydningsdragter", true, 30, 2, activity1);
+
+
+        equipmentRepository.save(equipment1);
+        equipmentRepository.save(equipment2);
+        equipmentRepository.save(equipment3);
+
     }
 }
