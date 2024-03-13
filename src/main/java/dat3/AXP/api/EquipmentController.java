@@ -16,12 +16,6 @@ import java.util.List;
     private EquipmentService equipmentService;
 
 
-        @GetMapping
-        public String helloAdventureXP() {
-            return "Equipment site for AdventureXP";
-        }
-
-
         @GetMapping("/all-equipment")
         public List<Equipment> getAllEquipment() {
             return equipmentService.getAllEquipment();
