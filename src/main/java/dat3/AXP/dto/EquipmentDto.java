@@ -15,7 +15,8 @@ public class EquipmentDto {
     private boolean status;
     private int totalUnits;
     private int defectiveUnits;
-    private Activity activity;
+    private int activityId;
+    private String activityName;
 
 
     public EquipmentDto(Equipment e) {
@@ -24,6 +25,10 @@ public class EquipmentDto {
         this.status = e.isStatus();
         this.totalUnits = e.getTotalUnits();
         this.defectiveUnits = e.getDefectiveUnits();
-        this.activity = e.getActivity();
+        if (e.getActivity() != null) {
+            this.activityId = e.getActivity().getId();
+            this.activityName = e.getActivity().getActivityName();
+            // Assign other necessary fields from Activity entity
+        }
     }
 }

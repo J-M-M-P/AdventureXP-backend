@@ -18,7 +18,7 @@ import java.util.List;
     private EquipmentService equipmentService;
 
     //Get all equipment in database
-     @GetMapping("/all-equipment")
+     @GetMapping("")
      public List<Equipment> getAllEquipment() {
             return equipmentService.getAllEquipment();
         }
