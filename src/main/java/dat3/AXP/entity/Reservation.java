@@ -41,4 +41,9 @@ public class Reservation {
         this.bookedStatus= bookedStatus;
     }
 
+    @ManyToOne
+    private Company company;
+
+    public void addCompany(Company company){ company.addReservation(this);}
+
 }

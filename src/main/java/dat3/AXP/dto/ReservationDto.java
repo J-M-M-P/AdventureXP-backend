@@ -14,10 +14,12 @@ public class ReservationDto {
     private Integer id;
     private LocalDateTime dateTime;
     private boolean bookedStatus;
+    private Integer companyId;
 
     public ReservationDto(Reservation r) {
         this.id = r.getId();
         this.dateTime = r.getDateTime();
         this.bookedStatus = r.isBookedStatus();
+        this.companyId = r.getCompany().getId();
     }
 }
