@@ -23,6 +23,9 @@ public class Reservation {
     private LocalDateTime dateTime;
     private boolean bookedStatus;
 
+    @ManyToOne
+    private Customer customer;
+
     @JsonIgnoreProperties("reservations")// Ignore 'reservations' field during serialization of Reservation
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
