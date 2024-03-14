@@ -5,6 +5,8 @@ import dat3.AXP.entity.Equipment;
 import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.ActivityRepository;
 import dat3.AXP.repository.EquipmentRepository;
+import dat3.AXP.entity.Customer;
+import dat3.AXP.repository.CustomerRepository;
 import dat3.AXP.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
@@ -24,14 +26,16 @@ public class SetupDevUsers implements ApplicationRunner {
     EquipmentRepository equipmentRepository;
     ReservationRepository reservationRepository;
     ActivityRepository activityRepository;
+    CustomerRepository customerRepository;
     UserWithRolesRepository userWithRolesRepository;
     RoleRepository roleRepository;
     PasswordEncoder pwEncoder;
     String passwordUsedByAll;
 
-    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder, EquipmentRepository equipmentRepository) {
+    public SetupDevUsers(ReservationRepository reservationRepository, ActivityRepository activityRepository, CustomerRepository customerRepository, EquipmentRepository equipmentRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
         this.reservationRepository = reservationRepository;
         this.activityRepository = activityRepository;
+        this.customerRepository = customerRepository;
         this.userWithRolesRepository = userWithRolesRepository;
         this.roleRepository = roleRepository;
         this.pwEncoder = passwordEncoder;
@@ -79,15 +83,19 @@ public class SetupDevUsers implements ApplicationRunner {
         userWithRolesRepository.save(user2);
         userWithRolesRepository.save(user3);
         userWithRolesRepository.save(user4);
-        //---- test reservations/activity start ---- \\
+        //---- test data start ---- \\
         Activity activity1 = new Activity("Mini Golf", 0, 5, "Same as golf, just a bit smaller", "imagestringgoeshere....");
         Activity activity2 = new Activity("Go-Kart", 12, 16, "Race your friends in a Go-Kart", "imagestringgoeshere....");
         Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
+
         Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity1);
         Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
         Equipment equipment3 = new Equipment(3,"Paintball pistoler", true, 30, 2, activity3);
+
+        Customer customer1 = new Customer("Allan", 18, "12345678", "allan@email.email");
+        customerRepository.save(customer1);
 
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
@@ -95,6 +103,8 @@ public class SetupDevUsers implements ApplicationRunner {
 //        activity1.getReservations().add(reservation1);
 //        activity2.getReservations().add(reservation2);
 //        activity3.getReservations().add(reservation2);
+        reservation2.setCustomer(customer1);
+
 
 
 
@@ -103,13 +113,11 @@ public class SetupDevUsers implements ApplicationRunner {
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
-        //---- test reservations/activity end ---- \\
-
-
 
         equipmentRepository.save(equipment1);
         equipmentRepository.save(equipment2);
         equipmentRepository.save(equipment3);
 
+        //---- test data end ---- \\
     }
 }
