@@ -20,6 +20,7 @@ public class ReservationDto {
         this.id = r.getId();
         this.dateTime = r.getDateTime();
         this.bookedStatus = r.isBookedStatus();
-        this.companyId = r.getCompany().getId();
-    }
+        if (r.getCompany() != null) {
+            this.companyId = r.getCompany().getId(); // Set companyId if company is not null
+        }    }
 }
