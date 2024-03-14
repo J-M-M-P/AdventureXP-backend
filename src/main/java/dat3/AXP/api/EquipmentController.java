@@ -1,5 +1,6 @@
 package dat3.AXP.api;
 
+import dat3.AXP.dto.EquipmentDto;
 import dat3.AXP.entity.Equipment;
 import dat3.AXP.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,8 @@ import java.util.List;
 
         //Get equipment based on id
     @GetMapping("/{id}")
-    public ResponseEntity<Equipment> getEquipmentById(@PathVariable int id) {
-        Equipment equipment = equipmentService.getEquipmentById(id);
-        if (equipment != null) {
-            return ResponseEntity.ok(equipment);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public EquipmentDto getEquipmentById(@PathVariable int id) {
+        return equipmentService.getEquipmentById(id);
     }
 
     //Post equipment to database

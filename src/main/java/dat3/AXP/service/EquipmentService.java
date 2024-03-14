@@ -1,9 +1,12 @@
 package dat3.AXP.service;
 
+import dat3.AXP.dto.EquipmentDto;
 import dat3.AXP.entity.Equipment;
 import dat3.AXP.repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +23,10 @@ public class EquipmentService {
     }
 
     //Get equipment by id
-    public Equipment getEquipmentById(int id) {
-        return equipmentRepository.findById(id).orElse(null);
+    public EquipmentDto getEquipmentById(int id) {
+        Equipment equipment = equipmentRepository.findById(id).orElseThrow(() ->
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "equipment not found"));
+        return new EquipmentDto(equipment);
     }
 
 

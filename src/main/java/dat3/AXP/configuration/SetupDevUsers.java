@@ -85,6 +85,9 @@ public class SetupDevUsers implements ApplicationRunner {
         Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
+        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity1);
+        Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
+        Equipment equipment3 = new Equipment(3,"Paintball pistoler", true, 30, 2, activity3);
 
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
@@ -102,9 +105,6 @@ public class SetupDevUsers implements ApplicationRunner {
         reservationRepository.save(reservation1);
         //---- test reservations/activity end ---- \\
 
-        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity1);
-        Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
-        Equipment equipment3 = new Equipment(3,"Paintball pistoler", true, 30, 2, activity3);
 
 
         equipmentRepository.save(equipment1);

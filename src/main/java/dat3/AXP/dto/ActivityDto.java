@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,6 +18,7 @@ public class ActivityDto {
     private int participantLimit;
     private String description;
     private String image;
+    private Set<EquipmentDto> equipmentDtos;
 
     public ActivityDto(Activity a) {
         this.id = a.getId();
@@ -23,5 +27,6 @@ public class ActivityDto {
         this.participantLimit = a.getParticipantLimit();
         this.description = a.getDescription();
         this.image = a.getImage();
+        this.equipmentDtos = a.getEquipment().stream().map(EquipmentDto::new).collect(Collectors.toSet());
     }
 }
