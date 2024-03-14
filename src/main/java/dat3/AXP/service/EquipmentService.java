@@ -14,19 +14,28 @@ public class EquipmentService {
     @Autowired
     EquipmentRepository equipmentRepository;
 
+    //Get all equipment
     public List<Equipment> getAllEquipment() {
         return equipmentRepository.findAll();
     }
 
+    //Get equipment by id
+    public Equipment getEquipmentById(int id) {
+        return equipmentRepository.findById(id).orElse(null);
+    }
+
+
+    //Create equipment
     public Equipment createEquipment(Equipment equipment) {
         return equipmentRepository.save(equipment);
     }
 
+    //Delete equipment
     public void deleteEquipment(int equipmentId) {
         equipmentRepository.deleteById(equipmentId);
     }
 
-
+    //Update equipment
     public Equipment updateEquipment(int equipmentId, Equipment updatedEquipment) {
         // Kontroller, om udstyret med den angivne id eksisterer i databasen
         Optional<Equipment> existingEquipmentOptional = equipmentRepository.findById(equipmentId);
