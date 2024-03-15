@@ -1,4 +1,4 @@
-USE adventurexp;
+USE axp;
 
 INSERT INTO employees (id, first_name, last_name, phone) VALUES (1, 'John', 'Doe', 12345678);
 INSERT INTO employees (id, first_name, last_name, phone) VALUES (2, 'Alice', 'Smith', 98765432);
