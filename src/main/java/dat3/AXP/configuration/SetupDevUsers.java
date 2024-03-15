@@ -3,9 +3,14 @@ package dat3.AXP.configuration;
 import dat3.AXP.dto.CompanyDto;
 import dat3.AXP.dto.ReservationDto;
 import dat3.AXP.entity.Activity;
-import dat3.AXP.entity.Company;
-import dat3.AXP.entity.Customer;
+import dat3.AXP.entity.Equipment;
 import dat3.AXP.entity.Reservation;
+import dat3.AXP.repository.ActivityRepository;
+import dat3.AXP.repository.EquipmentRepository;
+import dat3.AXP.entity.Customer;
+import dat3.AXP.repository.CustomerRepository;
+import dat3.AXP.repository.ReservationRepository;
+import dat3.AXP.entity.Company;
 import dat3.AXP.repository.*;
 import dat3.AXP.service.CompanyService;
 import dat3.AXP.service.ReservationService;
@@ -24,6 +29,7 @@ import java.util.NoSuchElementException;
 @Component
 public class SetupDevUsers implements ApplicationRunner {
 
+    EquipmentRepository equipmentRepository;
     ReservationRepository reservationRepository;
     ActivityRepository activityRepository;
 
@@ -39,7 +45,8 @@ public class SetupDevUsers implements ApplicationRunner {
     PasswordEncoder pwEncoder;
     String passwordUsedByAll;
 
-    public SetupDevUsers(ReservationRepository reservationRepository, ReservationService reservationService, ActivityRepository activityRepository, CustomerRepository customerRepository, CompanyRepository companyRepository, CompanyService companyService, EmployeeRepository employeeRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+    public SetupDevUsers(ReservationRepository reservationRepository, ReservationService reservationService, ActivityRepository activityRepository, EquipmentRepository equipmentRepository, CustomerRepository customerRepository, CompanyRepository companyRepository, CompanyService companyService, EmployeeRepository employeeRepository, UserWithRolesRepository userWithRolesRepository,RoleRepository roleRepository,PasswordEncoder passwordEncoder) {
+
         this.reservationRepository = reservationRepository;
         this.reservationService = reservationService;
         this.activityRepository = activityRepository;
@@ -50,6 +57,7 @@ public class SetupDevUsers implements ApplicationRunner {
         this.userWithRolesRepository = userWithRolesRepository;
         this.roleRepository = roleRepository;
         this.pwEncoder = passwordEncoder;
+        this.equipmentRepository = equipmentRepository;
 
         passwordUsedByAll = "test12";
     }
@@ -99,6 +107,8 @@ public class SetupDevUsers implements ApplicationRunner {
         Activity activity3 = new Activity("Paintball", 16, 20, "Have a colorful shootout with your friends", "imagestringgoeshere....");
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
+
+
         Customer customer1 = new Customer("Allan", 18, "12345678", "allan@email.email");
         customerRepository.save(customer1);
 
@@ -159,10 +169,9 @@ public class SetupDevUsers implements ApplicationRunner {
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
         reservation1.getActivities().add(activity2);
-//        activity1.getReservations().add(reservation1);
-//        activity2.getReservations().add(reservation2);
-//        activity3.getReservations().add(reservation2);
         reservation2.setCustomer(customer1);
+
+
 
 
         activityRepository.save(activity1);
@@ -170,6 +179,19 @@ public class SetupDevUsers implements ApplicationRunner {
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
+
+        Equipment equipment1 = new Equipment("Golfkøller", true, 100, 10);
+        Equipment equipment2 = new Equipment("Gokarts", true, 20, 5);
+        Equipment equipment3 = new Equipment("Paintball pistoler", true, 30, 2);
+
+        equipment1.setActivity(activity1);
+        equipment2.setActivity(activity2);
+        equipment3.setActivity(activity3);
+
+        equipmentRepository.save(equipment1);
+        equipmentRepository.save(equipment2);
+        equipmentRepository.save(equipment3);
+
         //---- test data end ---- \\
     }
 }
