@@ -42,6 +42,7 @@ public class Reservation {
     }
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
 
     public void addCompany(Company company){ company.addReservation(this);}

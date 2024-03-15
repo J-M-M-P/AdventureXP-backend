@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/companies")
 public class CompanyController {
 
     private CompanyService companyService;
@@ -27,12 +27,6 @@ public class CompanyController {
     public CompanyDto addCompany(@RequestBody CompanyDto request){
         return companyService.addCompany(request);
     }
-
-//    @PostMapping("/createTen")
-//    public String createTenCompanies() {
-//        companyService.createTenCompanies();
-//        return "Ten companies created successfully!";
-//    }
 
 
    }

@@ -1,6 +1,7 @@
 package dat3.AXP.service;
 
 import dat3.AXP.dto.ReservationDto;
+import dat3.AXP.entity.Company;
 import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.CompanyRepository;
 import dat3.AXP.repository.ReservationRepository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 @Service
 public class ReservationService {
@@ -37,7 +38,11 @@ public class ReservationService {
         return new ReservationDto(reservation);
     }
 
-    public Reservation createReservation(Reservation reservation) {
+    public Reservation createReservation(ReservationDto reservationDto) {
+        Reservation reservation = new Reservation(reservationDto.getDateTime(), reservationDto.isBookedStatus());
+        Company company = companyRepository.findById(reservationDto.getCompanyId())
+                .orElseThrow(() -> new NoSuchElementException("Company not found"));
+        reservation.setCompany(company);
         return reservationRepository.save(reservation);
     }
 
