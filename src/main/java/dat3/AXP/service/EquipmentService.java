@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +19,15 @@ public class EquipmentService {
     EquipmentRepository equipmentRepository;
 
     //Get all equipment
-    public List<Equipment> getAllEquipment() {
-        return equipmentRepository.findAll();
+    public List<EquipmentDto> getAllEquipment() {
+        List<Equipment> equipmentList = equipmentRepository.findAll();
+        List<EquipmentDto> equipmentDtoList = new ArrayList<>();
+
+        for (Equipment equipment : equipmentList) {
+            equipmentDtoList.add(new EquipmentDto(equipment));
+        }
+
+        return equipmentDtoList;
     }
 
     //Get equipment by id

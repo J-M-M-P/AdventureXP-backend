@@ -18,7 +18,7 @@ public class ActivityDto {
     private int participantLimit;
     private String description;
     private String image;
-    private Set<EquipmentDto> equipmentDtos;
+    private Set<EquipmentDto> equipment;
 
     public ActivityDto(Activity a) {
         this.id = a.getId();
@@ -27,6 +27,6 @@ public class ActivityDto {
         this.participantLimit = a.getParticipantLimit();
         this.description = a.getDescription();
         this.image = a.getImage();
-        this.equipmentDtos = a.getEquipment().stream().map(EquipmentDto::new).collect(Collectors.toSet());
+        this.equipment = a.getEquipment().stream().map(EquipmentDto::new).collect(Collectors.toSet());
     }
 }

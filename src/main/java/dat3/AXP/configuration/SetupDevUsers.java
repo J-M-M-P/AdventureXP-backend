@@ -90,9 +90,6 @@ public class SetupDevUsers implements ApplicationRunner {
         Reservation reservation1 = new Reservation(LocalDateTime.of(2024, 4, 16, 12, 30,0), false);
         Reservation reservation2 = new Reservation(LocalDateTime.of(2024,4, 18, 10, 0, 0), false);
 
-        Equipment equipment1 = new Equipment(1,"Golfkøller", true, 100, 10, activity1);
-        Equipment equipment2 = new Equipment(2,"Gokarts", true, 20, 5, activity2);
-        Equipment equipment3 = new Equipment(3,"Paintball pistoler", true, 30, 2, activity3);
 
         Customer customer1 = new Customer("Allan", 18, "12345678", "allan@email.email");
         customerRepository.save(customer1);
@@ -100,9 +97,6 @@ public class SetupDevUsers implements ApplicationRunner {
         reservation2.getActivities().add(activity1);
         reservation1.getActivities().add(activity3);
         reservation1.getActivities().add(activity2);
-//        activity1.getReservations().add(reservation1);
-//        activity2.getReservations().add(reservation2);
-//        activity3.getReservations().add(reservation2);
         reservation2.setCustomer(customer1);
 
 
@@ -113,6 +107,14 @@ public class SetupDevUsers implements ApplicationRunner {
         activityRepository.save(activity3);
         reservationRepository.save(reservation2);
         reservationRepository.save(reservation1);
+
+        Equipment equipment1 = new Equipment("Golfkøller", true, 100, 10);
+        Equipment equipment2 = new Equipment("Gokarts", true, 20, 5);
+        Equipment equipment3 = new Equipment("Paintball pistoler", true, 30, 2);
+
+        equipment1.setActivity(activity1);
+        equipment2.setActivity(activity2);
+        equipment3.setActivity(activity3);
 
         equipmentRepository.save(equipment1);
         equipmentRepository.save(equipment2);
