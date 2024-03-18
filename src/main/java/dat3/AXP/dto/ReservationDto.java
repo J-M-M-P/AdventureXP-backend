@@ -15,6 +15,7 @@ public class ReservationDto {
     private LocalDateTime dateTime;
     private boolean bookedStatus;
     private Integer companyId;
+    private Integer customerId;
 
     public ReservationDto(Reservation r) {
         this.id = r.getId();
@@ -22,5 +23,9 @@ public class ReservationDto {
         this.bookedStatus = r.isBookedStatus();
         if (r.getCompany() != null) {
             this.companyId = r.getCompany().getId(); // Set companyId if company is not null
-        }    }
+        }
+        if (r.getCustomer() != null) {
+            this.customerId = r.getCustomer().getId();
+        }
+    }
 }
