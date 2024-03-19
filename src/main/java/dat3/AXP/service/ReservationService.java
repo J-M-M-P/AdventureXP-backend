@@ -2,8 +2,10 @@ package dat3.AXP.service;
 
 import dat3.AXP.dto.ReservationDto;
 import dat3.AXP.entity.Company;
+import dat3.AXP.entity.Customer;
 import dat3.AXP.entity.Reservation;
 import dat3.AXP.repository.CompanyRepository;
+import dat3.AXP.repository.CustomerRepository;
 import dat3.AXP.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +22,13 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
     private CompanyRepository companyRepository;
+    private CustomerRepository customerRepository;
 
 
-    public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository){
+    public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository, CustomerRepository customerRepository){
         this.reservationRepository = reservationRepository;
         this.companyRepository = companyRepository;
+        this.customerRepository = customerRepository;
     }
     public List<ReservationDto> getAllReservations(Integer companyId) {
         List<Reservation> reservations = companyId == null ? reservationRepository.findAll() : reservationRepository.findByCompanyId(companyId);
@@ -40,9 +44,16 @@ public class ReservationService {
 
     public Reservation createReservation(ReservationDto reservationDto) {
         Reservation reservation = new Reservation(reservationDto.getDateTime(), reservationDto.isBookedStatus());
-        Company company = companyRepository.findById(reservationDto.getCompanyId())
-                .orElseThrow(() -> new NoSuchElementException("Company not found"));
-        reservation.setCompany(company);
+        if(reservationDto.getCompanyId() != null) {
+            Company company = companyRepository.findById(reservationDto.getCompanyId())
+                    .orElseThrow(() -> new NoSuchElementException("Company not found"));
+            reservation.setCompany(company);
+        }
+        if(reservationDto.getCustomerId() != null) {
+            Customer customer = customerRepository.findById(reservationDto.getCustomerId())
+                    .orElseThrow(() -> new NoSuchElementException("Customer not found"));
+            reservation.setCustomer(customer);
+        }
         return reservationRepository.save(reservation);
     }
 
