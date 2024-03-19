@@ -43,7 +43,7 @@ public class ReservationService {
     }
 
     public Reservation createReservation(ReservationDto reservationDto) {
-        Reservation reservation = new Reservation(reservationDto.getDateTime(), reservationDto.isBookedStatus());
+        Reservation reservation = new Reservation(reservationDto.getReservationDay(), reservationDto.isBookedStatus(), reservationDto.getReservationTime(), reservationDto.getReservationWeek());
         if(reservationDto.getCompanyId() != null) {
             Company company = companyRepository.findById(reservationDto.getCompanyId())
                     .orElseThrow(() -> new NoSuchElementException("Company not found"));
@@ -69,7 +69,7 @@ public class ReservationService {
     }
 
     private void updateReservation(Reservation original, ReservationDto r) {
-        original.setDateTime(r.getDateTime());
+        original.setReservationTime(r.getReservationDay());
         original.setBookedStatus(r.isBookedStatus());
     }
 

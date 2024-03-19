@@ -38,12 +38,12 @@ VALUES (3, 1, true, 16, "Paintball pistol");
 
 
 -- RESERVATIONS
-INSERT INTO reservation (booked_status, customer_id, date_time)
-VALUES (1, 2, "2024-04-18 10:00:00.000000");
-INSERT INTO reservation (booked_status, customer_id, date_time)
-VALUES (0, null, "2024-06-22 12:00:00.000000");
-INSERT INTO reservation (booked_status, customer_id, date_time)
-VALUES (1, 1, "2024-05-20 14:00:00.000000");
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week )
+VALUES (1, 2, "Fredag", "10:30 - 12:00", 13);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week)
+VALUES (0, null, "Torsdag", "10:30 - 12:00", 13);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week)
+VALUES (1, 1, "Mandag", "10:30 - 12:00", 13);
 
 -- RESERVATION_ACTIVITY
 INSERT INTO reservation_activity (activity_id, reservation_id)
