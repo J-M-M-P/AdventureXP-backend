@@ -1,15 +1,12 @@
 
 package dat3.AXP.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,8 +18,10 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDateTime dateTime;
     private boolean bookedStatus;
+    private String reservationDay;
+    private String reservationTime;
+    private Integer reservationWeek;
 
     @ManyToOne
     private Customer customer;
@@ -36,9 +35,11 @@ public class Reservation {
     )
     private Set<Activity> activities = new HashSet<>();
 
-    public Reservation(LocalDateTime dateTime, boolean bookedStatus) {
-        this.dateTime = dateTime;
+    public Reservation(String reservationDay, boolean bookedStatus, String reservationTime, Integer reservationWeek) {
+        this.reservationDay = reservationDay;
         this.bookedStatus= bookedStatus;
+        this.reservationTime = reservationTime;
+        this.reservationWeek = reservationWeek;
     }
 
     @ManyToOne
