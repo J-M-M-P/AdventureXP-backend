@@ -1,9 +1,11 @@
 package dat3.AXP.service;
 
 import dat3.AXP.dto.ReservationDto;
+import dat3.AXP.entity.Activity;
 import dat3.AXP.entity.Company;
 import dat3.AXP.entity.Customer;
 import dat3.AXP.entity.Reservation;
+import dat3.AXP.repository.ActivityRepository;
 import dat3.AXP.repository.CompanyRepository;
 import dat3.AXP.repository.CustomerRepository;
 import dat3.AXP.repository.ReservationRepository;
@@ -23,6 +25,7 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
     private CompanyRepository companyRepository;
     private CustomerRepository customerRepository;
+    private ActivityRepository activityRepository;
 
 
     public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository, CustomerRepository customerRepository){
@@ -54,6 +57,12 @@ public class ReservationService {
                     .orElseThrow(() -> new NoSuchElementException("Customer not found"));
             reservation.setCustomer(customer);
         }
+        if(reservationDto.getActivityId() != null) {
+            Activity activity = activityRepository.findById(reservationDto.getActivityId())
+                    .orElseThrow(() -> new NoSuchElementException("Activity not found"));
+            reservation.setActivity(activity);
+        }
+
         return reservationRepository.save(reservation);
     }
 

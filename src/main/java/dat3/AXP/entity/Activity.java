@@ -29,9 +29,9 @@ public class Activity {
     private String image;
 
     //Code as it was before changes
-    @JsonIgnoreProperties("activities") // Ignore 'activities' field during serialization of Reservation
-    @ManyToMany(mappedBy = "activities", fetch = FetchType.EAGER)
-    private Set<Reservation> reservations = new HashSet<>();
+//    @JsonIgnoreProperties("activities") // Ignore 'activities' field during serialization of Reservation
+//    @ManyToMany(mappedBy = "activities", fetch = FetchType.EAGER)
+//    private Set<Reservation> reservations = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
