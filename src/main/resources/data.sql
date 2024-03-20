@@ -2,11 +2,19 @@ USE axp;
 
 -- ACTIVITY
 INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
-VALUES (0, 8, "Mini Golf", "Same as golf, just a bit smaller", "theimagestring");
+VALUES (0, 8, "Mini Golf", "Same as golf, just a bit smaller", "https://images.unsplash.com/photo-1612733061393-9b9f998e1f40?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
-VALUES (14, 12, "Go-Kart", "Race your friends in a Go-Kart", "theimagestring");
+VALUES (14, 12, "Go-Kart", "Race your friends in a Go-Kart", "https://images.unsplash.com/photo-1505570554449-69ce7d4fa36b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
 INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
-VALUES (16, 20, "Paintball", "Have a colorful shootout with your friends", "theimagestring");
+VALUES (16, 20, "Paintball", "Have a colorful shootout with your friends", "https://images.unsplash.com/photo-1588432892836-99b9aa3feb8a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
+VALUES (18, 6, "Bungee Jumping", "For the REAL adrenalinejunkies", "https://media.istockphoto.com/id/618974736/photo/jump-rope.jpg?s=2048x2048&w=is&k=20&c=HehYVH6PT3RwL_MTEX2O6R629x70tpydjgnxvrz4kt8=");
+INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
+VALUES (6, 14, "Wall Climbing", "Test your strength and endurance at the super cool climbing wall", "https://media.istockphoto.com/id/878244958/photo/you-did-it.jpg?s=2048x2048&w=is&k=20&c=sAawSgwWPY3NmMstWPOk9wvNfN1gvBjHEBbd7aphc8Q=");
+INSERT INTO activity (age_limit, participant_limit, activity_name, description, image)
+VALUES (18, 6, "Sumo Wrestling", "Have fun wrestling your friends", "https://media.istockphoto.com/id/1434690616/photo/men-and-women-in-sumo-suits-fighting-in-outdoor-amusement-park.jpg?s=1024x1024&w=is&k=20&c=fFAfgJKek7Uw3-5u0ettDrAHJ4GF9tAw5p6ww1twnD0=");
+
+
 
 -- COMPANIES
 INSERT INTO companies (id, company_name, contact_info, contact_person, cvr)
