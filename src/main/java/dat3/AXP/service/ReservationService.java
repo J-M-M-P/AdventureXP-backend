@@ -28,10 +28,11 @@ public class ReservationService {
     private ActivityRepository activityRepository;
 
 
-    public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository, CustomerRepository customerRepository){
+    public ReservationService(ReservationRepository reservationRepository, CompanyRepository companyRepository, CustomerRepository customerRepository, ActivityRepository activityRepository){
         this.reservationRepository = reservationRepository;
         this.companyRepository = companyRepository;
         this.customerRepository = customerRepository;
+        this.activityRepository = activityRepository;
     }
     public List<ReservationDto> getAllReservations(Integer companyId) {
         List<Reservation> reservations = companyId == null ? reservationRepository.findAll() : reservationRepository.findByCompanyId(companyId);
@@ -80,7 +81,10 @@ public class ReservationService {
     private void updateReservation(Reservation original, ReservationDto r) {
         original.setReservationTime(r.getReservationDay());
         original.setBookedStatus(r.isBookedStatus());
+        original.setActivity(activityRepository.findById(r.getActivityId())
+                .orElseThrow(() -> new NoSuchElementException("Activity not found")));
     }
+
 
     public ResponseEntity deleteReservation(int id) {
         Reservation reservation = reservationRepository.findById(id).orElseThrow(() ->

@@ -26,15 +26,6 @@ public class Reservation {
     @ManyToOne
     private Customer customer;
 
-//    @JsonIgnoreProperties("reservations")// Ignore 'reservations' field during serialization of Reservation
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "reservation_activity",
-//            joinColumns = @JoinColumn(name = "reservation_id"),
-//            inverseJoinColumns = @JoinColumn(name = "activity_id")
-//    )
-//    private Set<Activity> activities = new HashSet<>();
-
     @ManyToOne
     @JoinColumn(name = "activity_id")
     private Activity activity;
