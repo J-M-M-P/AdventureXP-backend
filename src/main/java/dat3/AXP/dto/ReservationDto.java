@@ -16,12 +16,14 @@ public class ReservationDto {
     private String reservationDay;
     private String reservationTime;
     private Integer reservationWeek;
+    private Integer activityId;
 
     public ReservationDto(Reservation r) {
         this.id = r.getId();
         this.reservationDay = r.getReservationDay();
         this.reservationTime = r.getReservationTime();
         this.reservationWeek = r.getReservationWeek();
+        this.activityId = r.getActivity().getId();
         this.bookedStatus = r.isBookedStatus();
         if (r.getCompany() != null) {
             this.companyId = r.getCompany().getId(); // Set companyId if company is not null
@@ -29,5 +31,8 @@ public class ReservationDto {
         if (r.getCustomer() != null) {
             this.customerId = r.getCustomer().getId();
         }
+//        if (r.getActivity() != null) {
+//
+//        }
     }
 }

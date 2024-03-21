@@ -46,15 +46,17 @@ VALUES (3, 1, true, 16, "Paintball pistol");
 
 
 -- RESERVATIONS
-INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week )
-VALUES (1, 2, "Fredag", "10:30 - 12:00", 13);
-INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week)
-VALUES (0, null, "Torsdag", "10:30 - 12:00", 13);
-INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week)
-VALUES (1, 1, "Mandag", "10:30 - 12:00", 13);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "10:30 - 12:00", 13, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week, activity_id)
+VALUES (0, null, "Torsdag", "10:30 - 12:00", 13,2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week, activity_id)
+VALUES (1, 1, "Mandag", "10:30 - 12:00", 13,3);
 
 -- RESERVATION_ACTIVITY
+/*
 INSERT INTO reservation_activity (activity_id, reservation_id)
 VALUES (1, 1);
 INSERT INTO reservation_activity (activity_id, reservation_id)
 VALUES (2, 2);
+*/
