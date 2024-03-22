@@ -11,7 +11,10 @@ import lombok.Setter;
 public class ReservationDto {
     private Integer id;
     private boolean bookedStatus;
-    private Integer companyId;
+    private String bookingType; // New field for booking type
+    private String reservationName; // New field for name
+    private Integer companyId; // New field for company ID
+    private Integer companyCVR; // New field for company CVR
     private Integer customerId;
     private String reservationDay;
     private String reservationTime;
@@ -25,14 +28,14 @@ public class ReservationDto {
         this.reservationWeek = r.getReservationWeek();
         this.activityId = r.getActivity().getId();
         this.bookedStatus = r.isBookedStatus();
+        this.bookingType = r.getBookingType();
+        this.reservationName = r.getReservationName();
+        this.companyCVR = r.getCompanyCVR();
         if (r.getCompany() != null) {
-            this.companyId = r.getCompany().getId(); // Set companyId if company is not null
+            this.companyId = r.getCompany().getId();
         }
         if (r.getCustomer() != null) {
             this.customerId = r.getCustomer().getId();
         }
-//        if (r.getActivity() != null) {
-//
-//        }
     }
 }

@@ -22,6 +22,9 @@ public class Reservation {
     private String reservationDay;
     private String reservationTime;
     private Integer reservationWeek;
+    private String bookingType; // New field for booking type
+    private String reservationName; // New field for name
+    private Integer companyCVR; // New field for company CVR
 
     @ManyToOne
     private Customer customer;
