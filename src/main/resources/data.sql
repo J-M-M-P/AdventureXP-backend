@@ -46,12 +46,100 @@ VALUES (3, 1, true, 16, "Paintball pistol");
 
 
 -- RESERVATIONS
+/* Mini Golf */
 INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
-VALUES (1, 2, "Fredag", "10:30 - 12:00", 13, 1);
-INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week, activity_id)
-VALUES (0, null, "Torsdag", "10:30 - 12:00", 13,2);
-INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week, activity_id)
-VALUES (1, 1, "Mandag", "10:30 - 12:00", 13,3);
+VALUES (1, 2, "Mandag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "09:00 - 10:30", 14, 1);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "09:00 - 10:30", 14, 1);
+
+/* Go-Cart */
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Mandag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "10:30 - 12:00", 14, 2);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "10:30 - 12:00", 14, 2);
+
+/* Paintball*/
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Mandag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "12:00 - 13:30", 14, 3);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "12:00 - 13:30", 14, 3);
+
+/* Bungee Jumping */
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Mandag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "13:30 - 15:00", 14, 4);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "13:30 - 15:00", 14, 4);
+
+/* Wall Climbing */
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Mandag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Fredag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "15:00 - 16:30", 14, 5);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "15:00 - 16:30", 14, 5);
+
+/* Sumo Wrestling */
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Mandag", "16:30 - 18:00", 14, 6);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Tirsdag", "16:30 - 18:00", 14, 6);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Onsdag", "16:30 - 18:00", 14, 6);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Torsdag", "16:30 - 18:00", 14, 6);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Lørdag", "16:30 - 18:00", 14, 6);
+INSERT INTO reservation (booked_status, customer_id, reservation_day,reservation_time, reservation_week , activity_id)
+VALUES (1, 2, "Søndag", "16:30 - 18:00", 14, 6);
+
 
 -- RESERVATION_ACTIVITY
 /*

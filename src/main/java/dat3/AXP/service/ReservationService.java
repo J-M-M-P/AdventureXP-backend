@@ -48,22 +48,31 @@ public class ReservationService {
 
     public Reservation createReservation(ReservationDto reservationDto) {
         Reservation reservation = new Reservation(reservationDto.getReservationDay(), reservationDto.isBookedStatus(), reservationDto.getReservationTime(), reservationDto.getReservationWeek());
-        if(reservationDto.getCompanyId() != null) {
+        // Set reservation fields based on booking type
+        if ("Privat".equals(reservationDto.getBookingType())) {
+            reservation.setBookingType(reservationDto.getBookingType());
+            reservation.setReservationName(reservationDto.getReservationName());
+        } else if ("Erhverv".equals(reservationDto.getBookingType())) {
+            reservation.setBookingType(reservationDto.getBookingType());
+            reservation.setReservationName(reservationDto.getReservationName());
+            reservation.setCompanyCVR(reservationDto.getCompanyCVR());
+        }
+        // Set related entities
+        if (reservationDto.getCompanyId() != null) {
             Company company = companyRepository.findById(reservationDto.getCompanyId())
                     .orElseThrow(() -> new NoSuchElementException("Company not found"));
             reservation.setCompany(company);
         }
-        if(reservationDto.getCustomerId() != null) {
+        if (reservationDto.getCustomerId() != null) {
             Customer customer = customerRepository.findById(reservationDto.getCustomerId())
                     .orElseThrow(() -> new NoSuchElementException("Customer not found"));
             reservation.setCustomer(customer);
         }
-        if(reservationDto.getActivityId() != null) {
+        if (reservationDto.getActivityId() != null) {
             Activity activity = activityRepository.findById(reservationDto.getActivityId())
                     .orElseThrow(() -> new NoSuchElementException("Activity not found"));
             reservation.setActivity(activity);
         }
-
         return reservationRepository.save(reservation);
     }
 
